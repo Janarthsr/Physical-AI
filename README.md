@@ -12,3 +12,36 @@ Real-time Teleoperation: Uses MediaPipe to map 3D human arm landmarks to robot a
 
 3)Robust Setup: Includes a setup.bat for automated environment configuration and Python 3.11 optimization.
 
+1. Header and Intro
+Markdown
+# XP-Robot-Physical-AI
+**Task 4: Dynamic Humanoid Walking + Human Pose Mirroring**
+
+---
+
+## 🤖 Project Overview
+This project implements a **Physical AI** system where a humanoid robot in a MuJoCo simulation mirrors human movements captured via webcam and performs dynamic tasks like object detection and balanced locomotion.
+2. The Structured File List
+Markdown
+---
+
+### 📂 Repository Structure
+* **`main.py`** — The core engine managing Camera, Logic, and Simulation threads.
+* **`XP_robot_v2.xml`** — High-fidelity robot model with $0.0005s$ physics timestep.
+* **`setup.bat`** — One-click environment setup for Windows.
+* **`requirements.txt`** — List of all Python dependencies.
+* **`meshes/`** — Physical 3D components of the humanoid.
+3. Key Features & Controls
+Markdown
+---
+
+## 🚀 Key Features
+* **Pose Mirroring:** Real-time mapping of human arm landmarks (MediaPipe) to robot actuators.
+- **Dynamic Stability:** IMU-based fall prevention system and PD control for the legs.
+- **Vision Integration:** YOLOv8-based object detection for identifying targets.
+
+## 🎮 Controls
+- `B`: Toggle IMU Balance Mode (prevents falling).
+- `W`: Toggle Walking Mode (initiates gait cycle).
+- `ESC`: Close the simulation safely.
+
