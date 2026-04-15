@@ -1,0 +1,161 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<mujoco model="XP_robot">
+<compiler angle="radian" inertiafromgeom="true"/>
+<option gravity="0 0 -9.81" timestep="0.0005"/>
+<default>
+<joint damping="5.0" frictionloss="0.5" armature="0.05"/>
+<motor ctrlrange="-1 1" ctrllimited="true"/>
+</default>
+<visual>
+<headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+<rgba haze="0.15 0.25 0.35 1"/>
+<global azimuth="160" elevation="-20"/>
+</visual>
+<asset>
+<mesh name="pelvis" file="meshes/pelvis.stl" scale="0.001 0.001 0.001"/>
+<mesh name="hip_pitch_r" file="meshes/hip_pitch_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="hip_roll_r" file="meshes/hip_roll_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="thigh_r" file="meshes/thigh_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="leg_shank_r" file="meshes/leg_shank_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="uj_r" file="meshes/uj_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="foot_r" file="meshes/foot_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="hip_pitch_l" file="meshes/hip_pitch_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="hip_roll_l" file="meshes/hip_roll_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="thigh_l" file="meshes/thigh_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="leg_shank_l" file="meshes/leg_shank_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="uj_l" file="meshes/uj_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="foot_l" file="meshes/foot_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="torso" file="meshes/torso.stl" scale="0.001 0.001 0.001"/>
+<mesh name="shoulder_pitch_r" file="meshes/shoulder_pitch_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="shoulder_roll_r" file="meshes/shoulder_roll_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="bicep_r" file="meshes/bicep_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="forearm_r" file="meshes/forearm_r.stl" scale="0.001 0.001 0.001"/>
+<mesh name="shoulder_pitch_l" file="meshes/shoulder_pitch_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="shoulder_roll_l" file="meshes/shoulder_roll_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="bicep_l" file="meshes/bicep_l.stl" scale="0.001 0.001 0.001"/>
+<mesh name="forearm_l" file="meshes/forearm_l.stl" scale="0.001 0.001 0.001"/>
+<texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+<texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+<material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+</asset>
+<worldbody>
+<light pos="0 0 3.5" dir="0 0 -1" directional="true"/>
+<geom name="floor" size="0 0 0.05" pos="0 0 0" type="plane" material="groundplane"/>
+<body name="pelvis" pos="0 0 0.9">
+<joint name="root" type="free"/>
+<geom name="pelvis_geom" type="mesh" mesh="pelvis"/>
+<site name="imu_site" pos="0 0 0.1" size="0.01"/>
+<body name="hip_pitch_r" pos="-0.07 0 0.06" euler="3.14 -1.3 3.14">
+<joint name="pelvis_hip_pitch_r" type="hinge" axis="0 0 -1" range="-3.14 3.14" limited="true"/>
+<geom name="hip_pitch_r_geom" type="mesh" mesh="hip_pitch_r"/>
+<body name="hip_roll_r" pos="-0.13 0 0.11" euler="-3.14 1.3 1.57">
+<joint name="hip_pitch_r_hip_roll_r" type="hinge" axis="1 0 0" range="-2.35 0.29" limited="true"/>
+<geom name="hip_roll_r_geom" type="mesh" mesh="hip_roll_r"/>
+<body name="thigh_r" pos="-0.01 0.13 -0.16">
+<joint name="hip_roll_r_thigh_yaw_r" type="hinge" axis="0 0 -1" range="-3.14 3.14" limited="true"/>
+<geom name="thigh_r_geom" type="mesh" mesh="thigh_r"/>
+<body name="leg_shank_r" pos="0.01 0.01 0.26" euler="0 0 1.57">
+<joint name="thigh_r_knee_r" type="hinge" axis="-1 0 0" range="-1.57 0" limited="true"/>
+<geom name="leg_shank_r_geom" type="mesh" mesh="leg_shank_r"/>
+<body name="uj_r" pos="-0.14 0 -0.7" euler="0 0 -1.57">
+<joint name="leg_shank_r_ankle_pitch_r" type="hinge" axis="0 1 0" range="-0.69 0.69" limited="true"/>
+<geom name="uj_r_geom" type="mesh" mesh="uj_r"/>
+<body name="foot_r" pos="0.02 0 -0.03" euler="0 0 1.57">
+<joint name="uj_r_ankle_roll_r" type="hinge" axis="0 -1 0" range="-0.34 0.34" limited="true"/>
+<geom name="foot_r_geom" type="mesh" mesh="foot_r"/>
+</body>
+</body>
+</body>
+</body>
+</body>
+</body>
+<body name="hip_pitch_l" pos="0.07 0 0.06" euler="3.14 1.3 -3.14">
+<joint name="pelvis_hip_pitch_l" type="hinge" axis="0 0 1" range="-3.14 3.14" limited="true"/>
+<geom name="hip_pitch_l_geom" type="mesh" mesh="hip_pitch_l"/>
+<body name="hip_roll_l" pos="0.13 0 0.11" euler="-3.14 -1.3 1.57">
+<joint name="hip_pitch_l_hip_roll_l" type="hinge" axis="1 0 0" range="-0.29 2.35" limited="true"/>
+<geom name="hip_roll_l_geom" type="mesh" mesh="hip_roll_l"/>
+<body name="thigh_l" pos="-0.01 0.13 -0.16">
+<joint name="hip_roll_l_thigh_yaw_l" type="hinge" axis="0 0 -1" range="-3.14 3.14" limited="true"/>
+<geom name="thigh_l_geom" type="mesh" mesh="thigh_l"/>
+<body name="leg_shank_l" pos="0.01 0.01 0.26" euler="0 0 1.57">
+<joint name="thigh_l_knee_l" type="hinge" axis="-1 0 0" range="-1.57 0" limited="true"/>
+<geom name="leg_shank_l_geom" type="mesh" mesh="leg_shank_l"/>
+<body name="uj_l" pos="-0.14 0 -0.7" euler="-3.13 0 -1.57">
+<joint name="leg_shank_l_ankle_pitch_l" type="hinge" axis="0 1 0" range="-0.69 0.69" limited="true"/>
+<geom name="uj_l_geom" type="mesh" mesh="uj_l"/>
+<body name="foot_l" pos="-0.02 0 0.03" euler="-3.14 0 -1.57">
+<joint name="uj_l_ankle_roll_l" type="hinge" axis="0 -1 0" range="-0.34 0.34" limited="true"/>
+<geom name="foot_l_geom" type="mesh" mesh="foot_l"/>
+</body>
+</body>
+</body>
+</body>
+</body>
+</body>
+<body name="torso" pos="0 0 0.2" euler="0 0 -3.14">
+<joint name="pelvis_torso_yaw" type="hinge" axis="0 0 -1" range="-3.14 3.14" limited="true"/>
+<geom name="torso_geom" type="mesh" mesh="torso"/>
+<body name="shoulder_pitch_r" pos="0.22 -0.004 0.26" euler="0 0 3.14">
+<joint name="torso_arm_pitch_r" type="hinge" axis="-1 0 0" range="-3.14 3.14" limited="true"/>
+<geom name="shoulder_pitch_r_geom" type="mesh" mesh="shoulder_pitch_r"/>
+<body name="shoulder_roll_r" pos="0 -0.002 -0.08" euler="0 0 -1.57">
+<joint name="shoulder_pitch_r_arm_roll_r" type="hinge" axis="-1 0 0" range="-0.08 3.31" limited="true"/>
+<geom name="shoulder_roll_r_geom" type="mesh" mesh="shoulder_roll_r"/>
+<body name="bicep_r" pos="-0.006 0 -0.03" euler="0 0 1.57">
+<joint name="shoulder_roll_r_arm_yaw_r" type="hinge" axis="0 0 -1" range="-3.14 3.14" limited="true"/>
+<geom name="bicep_r_geom" type="mesh" mesh="bicep_r"/>
+<body name="forearm_r" pos="-0.003 0.02 -0.09">
+<joint name="bicep_r_elbow_r" type="hinge" axis="1 0 0" range="-2.53 0" limited="true"/>
+<geom name="forearm_r_geom" type="mesh" mesh="forearm_r"/>
+</body>
+</body>
+</body>
+</body>
+<body name="shoulder_pitch_l" pos="-0.22 -0.004 0.31" euler="3.14 0 0">
+<joint name="torso_arm_pitch_l" type="hinge" axis="1 0 0" range="-3.14 3.14" limited="true"/>
+<geom name="shoulder_pitch_l_geom" type="mesh" mesh="shoulder_pitch_l"/>
+<body name="shoulder_roll_l" pos="0 -0.002 0.13" euler="3.14 0 1.57">
+<joint name="shoulder_pitch_l_arm_roll_l" type="hinge" axis="-1 0 0" range="-3.31 0.08" limited="true"/>
+<geom name="shoulder_roll_l_geom" type="mesh" mesh="shoulder_roll_l"/>
+<body name="bicep_l" pos="-0.006 0 -0.03" euler="0 0 1.57">
+<joint name="shoulder_roll_l_arm_yaw_l" type="hinge" axis="0 0 -1" range="-3.14 3.14" limited="true"/>
+<geom name="bicep_l_geom" type="mesh" mesh="bicep_l"/>
+<body name="forearm_l" pos="-0.003 0.02 -0.09">
+<joint name="bicep_l_elbow_l" type="hinge" axis="1 0 0" range="-2.53 0" limited="true"/>
+<geom name="forearm_l_geom" type="mesh" mesh="forearm_l"/>
+</body>
+</body>
+</body>
+</body>
+</body>
+</body>
+</worldbody>
+<actuator>
+<motor name="hip_pitch_r" joint="pelvis_hip_pitch_r" gear="150"/>
+<motor name="hip_roll_r" joint="hip_pitch_r_hip_roll_r" gear="150"/>
+<motor name="thigh_yaw_r" joint="hip_roll_r_thigh_yaw_r" gear="150"/>
+<motor name="knee_r" joint="thigh_r_knee_r" gear="150"/>
+<motor name="ankle_pitch_r" joint="leg_shank_r_ankle_pitch_r" gear="80"/>
+<motor name="ankle_roll_r" joint="uj_r_ankle_roll_r" gear="80"/>
+<motor name="hip_pitch_l" joint="pelvis_hip_pitch_l" gear="150"/>
+<motor name="hip_roll_l" joint="hip_pitch_l_hip_roll_l" gear="150"/>
+<motor name="thigh_yaw_l" joint="hip_roll_l_thigh_yaw_l" gear="150"/>
+<motor name="knee_l" joint="thigh_l_knee_l" gear="150"/>
+<motor name="ankle_pitch_l" joint="leg_shank_l_ankle_pitch_l" gear="80"/>
+<motor name="ankle_roll_l" joint="uj_l_ankle_roll_l" gear="80"/>
+<motor name="torso_yaw" joint="pelvis_torso_yaw" gear="90"/>
+<motor name="arm_pitch_r" joint="torso_arm_pitch_r" gear="60"/>
+<motor name="arm_roll_r" joint="shoulder_pitch_r_arm_roll_r" gear="60"/>
+<motor name="arm_yaw_r" joint="shoulder_roll_r_arm_yaw_r" gear="30"/>
+<motor name="elbow_r" joint="bicep_r_elbow_r" gear="30"/>
+<motor name="arm_pitch_l" joint="torso_arm_pitch_l" gear="60"/>
+<motor name="arm_roll_l" joint="shoulder_pitch_l_arm_roll_l" gear="60"/>
+<motor name="arm_yaw_l" joint="shoulder_roll_l_arm_yaw_l" gear="30"/>
+<motor name="elbow_l" joint="bicep_l_elbow_l" gear="30"/>
+</actuator>
+<sensor>
+<gyro name="imu_gyro" site="imu_site"/>
+<accelerometer name="imu_acc" site="imu_site"/>
+</sensor>
+</mujoco>
