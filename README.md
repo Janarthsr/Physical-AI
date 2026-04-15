@@ -22,7 +22,7 @@ Real-time Teleoperation: Uses MediaPipe to map 3D human arm landmarks to robot a
 
 3)Robust Setup: Includes a setup.bat for automated environment configuration and Python 3.11 optimization.
 
-1. Header and Intro
+
 Markdown
 # XP-Robot-Physical-AI
 **Task 4: Dynamic Humanoid Walking + Human Pose Mirroring**
@@ -31,7 +31,7 @@ Markdown
 
 ## 🤖 Project Overview
 This project implements a **Physical AI** system where a humanoid robot in a MuJoCo simulation mirrors human movements captured via webcam and performs dynamic tasks like object detection and balanced locomotion.
-2. The Structured File List
+
 Markdown
 ---
 
@@ -41,7 +41,7 @@ Markdown
 * **`setup.bat`** — One-click environment setup for Windows.
 * **`requirements.txt`** — List of all Python dependencies.
 * **`meshes/`** — Physical 3D components of the humanoid.
-3. Key Features & Controls
+
 Markdown
 ---
 
