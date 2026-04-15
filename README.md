@@ -23,7 +23,7 @@ Real-time Teleoperation: Uses MediaPipe to map 3D human arm landmarks to robot a
 3)Robust Setup: Includes a setup.bat for automated environment configuration and Python 3.11 optimization.
 
 
-Markdown
+
 # XP-Robot-Physical-AI
 **Task 4: Dynamic Humanoid Walking + Human Pose Mirroring**
 
