@@ -4,7 +4,7 @@ https://github.com/user-attachments/assets/a9e866f8-cb51-4d0b-a4cc-072dbb661473
 
 
 
-https://github.com/user-attachments/assets/417f9165-f8d1-4037-9491-06b2fba681a1
+
 
 # Physical-AI
 
