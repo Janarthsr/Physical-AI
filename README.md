@@ -8,50 +8,50 @@ https://github.com/user-attachments/assets/5024d673-9baa-4b88-a74e-270bf5efb269
 
 
 
-# Physical-AI
+# 🤖 XP-Humanoid: End-to-End Physical AI Framework
+[![NVIDIA RTX 4050](https://img.shields.io/badge/GPU-NVIDIA%20RTX%204050-green.svg)](https://www.nvidia.com/en-in/geforce/laptops/rtx-4050/)
+[![MuJoCo](https://img.shields.io/badge/Physics-MuJoCo-blue.svg)](https://mujoco.org/)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-yellow.svg)](https://www.python.org/)
 
+An advanced **Physical AI** humanoid system that bridges the gap between human intent and robotic execution. This framework integrates **Computer Vision**, **Real-time Teleoperation**, and **Dynamic Physics Simulation** to achieve low-latency pose mirroring and autonomous locomotion.
 
-A Physical AI Humanoid simulation using MuJoCo and MediaPipe for real-time human pose mirroring, dynamic walking, and YOLOv8-based object detection.
-XP Robot: Real-time Humanoid Mirroring & Locomotion
-An end-to-end Physical AI framework that maps human movements from a webcam to a MuJoCo humanoid model. Features include PD-controlled balance, an oscillatory walking gait, and vision-integrated target tracking.
-Real-time Teleoperation: Uses MediaPipe to map 3D human arm landmarks to robot actuators with low latency.
-
-1)Dynamic Physics: Implemented in MuJoCo with a custom PD controller for balance and stability.
-
-2)Vision-Guided AI: Integrated YOLOv8 for real-time object identification and distance estimation.
-
-3)Robust Setup: Includes a setup.bat for automated environment configuration and Python 3.11 optimization.
-
-
-
-# XP-Robot-Physical-AI
-**Task 4: Dynamic Humanoid Walking + Human Pose Mirroring**
+## 🌟 Key Technical Features
+*   **Real-time Human-to-Robot Mapping:** Leverages **MediaPipe** to extract 3D skeletal landmarks from a standard webcam, mapping them to MuJoCo actuators with optimized PD control loops.
+*   **CUDA-Accelerated Vision:** Integrated **YOLOv8** for real-time spatial awareness, object classification, and distance estimation for autonomous target tracking.
+*   **Dynamic Stability & Locomotion:** Features a custom **IMU-based fall prevention system** and oscillatory gait cycles for stable bipedal walking.
+*   **High-Fidelity Simulation:** Optimized for a **0.0005s physics timestep** to ensure sub-millisecond precision in contact dynamics.
 
 ---
 
-## 🤖 Project Overview
-This project implements a **Physical AI** system where a humanoid robot in a MuJoCo simulation mirrors human movements captured via webcam and performs dynamic tasks like object detection and balanced locomotion.
+## 💻 Hardware & Performance
+This project is optimized for high-compute workloads and is designed to be portable to **NVIDIA Jetson** edge platforms.
+*   **Inference & Training GPU:** NVIDIA GeForce RTX 4050 Laptop GPU.
+*   **Compute Stack:** CUDA-accelerated processing for simultaneous Vision (YOLOv8) and Physics (MuJoCo) pipelines.
+*   **Simulation Environment:** Optimized for Windows 11 with Python 3.11 and high-frequency sensor polling.
 
-Markdown
 ---
 
-### 📂 Repository Structure
-* **`main.py`** — The core engine managing Camera, Logic, and Simulation threads.
-* **`XP_robot_v2.xml`** — High-fidelity robot model with $0.0005s$ physics timestep.
-* **`setup.bat`** — One-click environment setup for Windows.
-* **`requirements.txt`** — List of all Python dependencies.
-* **`meshes/`** — Physical 3D components of the humanoid.
+## 📂 Repository Structure
+*   **`main.py`** — Multithreaded core managing the vision-logic-simulation pipeline.
+*   **`XP_robot_v2.xml`** — The Digital Twin; a high-fidelity robot model with comprehensive MJCF definitions.
+*   **`setup.bat`** — Automated environment deployment for rapid testing.
+*   **`meshes/`** — High-resolution STL components for the humanoid chassis.
 
-Markdown
 ---
 
-## 🚀 Key Features
-* **Pose Mirroring:** Real-time mapping of human arm landmarks (MediaPipe) to robot actuators.
-- **Dynamic Stability:** IMU-based fall prevention system and PD control for the legs.
-- **Vision Integration:** YOLOv8-based object detection for identifying targets.
+## 🎮 Deployment & Controls
+### One-Click Setup
+```bash
+./setup.bat
+```
+### Live Operation
+| Key | Action |
+| :--- | :--- |
+| **B** | Toggle **IMU Balance Mode** (Active Fall Prevention) |
+| **W** | Initiate **Gait Cycle** (Dynamic Walking) |
+| **ESC** | Safe Shutdown of Simulation Threads |
 
-## 🎮 Controls
-- `B`: Toggle IMU Balance Mode (prevents falling).
-- `W`: Toggle Walking Mode (initiates gait cycle).
-- `ESC`: Close the simulation safely.
+---
 
+## 🚀 Future Roadmap: Sim-to-Real
+The architecture of this framework is designed for seamless deployment onto **NVIDIA Jetson Orin Nano**. Future iterations aim to replace the simulation environment with real-world **SO-101** or custom humanoid hardware using the same ACT-policy logic and vision-guided control.
